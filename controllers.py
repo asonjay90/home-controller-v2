@@ -14,15 +14,15 @@ class Controllers(object):
   def __init__(self):
     self.cast = pychromecast.Chromecast(self.SPEAKER_IP)
     self.phue = Bridge(self.BRIDGE_IP)
-    self.tv = cec.Device(cec.CECDEVICE_TV)
+    self.hdmi = cec.Device(cec.CECDEVICE_TV)
     cec.init()
 
   def tv_ctrl(self, power=None):
     if power:
-      return self.tv.power_on()
-    return self.tv.standby()
+      return self.hdmi.power_on()
+    return self.hdmi.standby()
     
-  def light_ctrl(self, power=None):
+  def lights_ctrl(self, power=None):
     if power:
       return self.phue.set_light(self.LIVING_ROOM, 'on', True)
     return self.phue.set_light(self.LIVING_ROOM, 'on', False)
@@ -31,3 +31,14 @@ class Controllers(object):
     if power:
       return self.cast.media_controller.play()
     return self.cast.media_controller.pause()
+
+  def all_ctrl(self, power=None):
+    if power:
+      self.tv_ctrl(True)
+      self.lights_ctrl(True)
+      self.speaker_ctrl(True)
+      return
+    self.tv_ctrl()
+    self.lights_ctrl()
+    self.speaker_ctrl()
+    return
