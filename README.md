@@ -2,7 +2,7 @@
 
 Steps to install dependencies:
 
-Setup libcec for HDMI Control:
+Setup libcec for HDMI Control:\n
 wget http://packages.namniart.com/repos/namniart.key -O - | sudo apt-key add -
 sudo sh -c 'echo "deb http://packages.namniart.com/repos/pi wheezy main" > /etc/apt/sources.list.d/libcec.list'
 sudo apt-get update
