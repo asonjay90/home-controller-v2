@@ -1,8 +1,6 @@
 # home-controller-v2
 Helps me to control many of my IOT devices in an awesome way.
 
-## Steps to install dependencies:
-
 ### Setup libcec for HDMI Control:
 ```
 wget http://packages.namniart.com/repos/namniart.key -O - | sudo apt-key add -
